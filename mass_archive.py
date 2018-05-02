@@ -3,9 +3,8 @@ from __future__ import print_function
 import sys
 import requests
 import archiveis
-import json
 
-URL = "https://api.perma.cc/v1/archives/?api_key=YOUR_PERMA_API_KEY_HERE"
+PERMA_AIP_KEY = ""  # <-- remember to put your Perma.cc API key in here
 
 target = str(sys.argv[1])
 
@@ -42,17 +41,14 @@ def internet_archive(target):
 #
 def perma(target):
 
+    assert PERMA_AIP_KEY, "PERMA_AIP_KEY is not set."
     print("[*] Pushing to Perma.cc...")
 
-    perma_json = {}
-    perma_json['url'] = '%s' % target
-
-    # remember to put your Perma.cc API key in here
-    response = requests.post(URL, data=perma_json)
+    response = requests.post("https://api.perma.cc/v1/archives/?api_key=" +
+                             PERMA_AIP_KEY, data={'url': target})
     if response.status_code == 201:
 
-        result = json.loads(response.content)
-        page_id = result['guid']
+        page_id = response.json()['guid']
         perma_url = "https://perma.cc/%s" % page_id
 
         return perma_url
@@ -70,5 +66,5 @@ archiveis_result = archiveis.capture(target)
 print(archiveis_result)
 
 # push to perma.cc
-perma_result = perma(target)
+perma_result = perma(target) if PERMA_AIP_KEY else "Skipping Perma: No API key"
 print(perma_result)
