@@ -60,7 +60,7 @@ print internet_archive_result
 
 # push to archive.is
 print "[*] Pushing to archive.is..."
-archiveis_result = archiveis.capture(input)
+archiveis_result = archiveis.capture(input).replace("http://", "https://")
 print archiveis_result
 
 # push to perma.cc
