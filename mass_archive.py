@@ -17,20 +17,21 @@ def internet_archive(input):
     
     save_url = "https://web.archive.org/save/%s" % input
     
-    # send off request to wayback machine
-    response = requests.get(save_url)
+    try:
+        # send off request to wayback machine
+        response = requests.get(save_url)
+        response.raise_for_status()
     
-    if response.status_code == 200:
+    except requests.exceptions.HTTPError, e:        
+        return "[!] Connection error"
+
+    # grab the part of the URL dealing with the archive page
+    result               = response.headers['Content-Location']
         
-        # grab the part of the URL dealing with the archive page
-        result               = response.headers['Content-Location']
+    # build archive URL 
+    internet_archive_url = "https://web.archive.org%s" % result
         
-        # build archive URL 
-        internet_archive_url = "https://web.archive.org%s" % result
-        
-        return internet_archive_url
-    else:
-        print "[!] Connection error"
+    return internet_archive_url
 
 #
 # function for pushing to Perma.cc
