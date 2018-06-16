@@ -60,8 +60,12 @@ print internet_archive_result
 
 # push to archive.is
 print "[*] Pushing to archive.is..."
-archiveis_result = archiveis.capture(input).replace("http://", "https://")
-print archiveis_result
+try:
+    archiveis_result = archiveis.capture(input).replace("http://", "https://")
+    print archiveis_result
+
+except requests.exceptions.ConnectionError:
+    print "[*] Connection error"
 
 # push to perma.cc
 perma_result = perma(input)
