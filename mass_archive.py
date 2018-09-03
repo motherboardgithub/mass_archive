@@ -16,7 +16,7 @@ def internet_archive(url):
     """
     print("[*] Pushing to the Wayback Machine...")
     
-    save_url = "https://web.archive.org/save/%s" % url
+    save_url = "https://web.archive.org/save/{}".format(url)
     response = requests.get(save_url)
     
     if response.status_code == 200:
