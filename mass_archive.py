@@ -57,6 +57,8 @@ def archive_is(url):
     print(archiveis_result)
 
 def main():
+    global perma_key
+
     parser = argparse.ArgumentParser(description="Archive a webpage on multiple online web archives")
     parser.add_argument("--perma-key", action="store", required=False,
                         help="Specify API key required to submit URL to Perma.cc")
