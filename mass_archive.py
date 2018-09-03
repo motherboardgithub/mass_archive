@@ -78,7 +78,10 @@ def main():
 
         with open(args.target, "r") as handle:
             for line in handle:
-                urls.append(line.strip())
+                line = line.strip()
+                if line == "":
+                    continue
+                urls.append(line)
     else:
         urls.append(args.target)
 
