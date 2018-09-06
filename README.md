@@ -1,5 +1,5 @@
 # mass_archive
-A basic python 2.7 tool for pushing a web page to multiple archiving services at once.
+A basic Python tool for pushing a web page to multiple archiving services at once.
 
 # Archivers:
 
@@ -20,6 +20,8 @@ mass_archive requires several different modules to function. Those modules are:
 - archiveis (a wrapper for the archiveis service, install here: https://github.com/pastpages/archiveis)
 
 You can typically install these, if necessary, through pip (details on pip here: https://pip.pypa.io/en/stable/installing/)
+
+The tool works with Python 2.7 and Python 3.
 
 # Usage:
 
