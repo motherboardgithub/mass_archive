@@ -23,4 +23,4 @@ You can typically install these, if necessary, through pip (details on pip here:
 
 # Usage:
 
-To use the tool, download the mass_archive.py script, open a terminal in the directory you put the file, and type "python mass_archive.py example.com", with example.com being the webpage you want to archive.
+To use the tool, download the mass_archive.py script, open a terminal in the directory you put the file, and type "python mass_archive.py example.com", with example.com being the webpage you want to archive. You can also input a file containing a list of URLs if you want to archive a load at once. Type "python mass_archive.py --list filename.txt".
